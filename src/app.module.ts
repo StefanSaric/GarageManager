@@ -3,12 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import {GarageModule} from "./garage/garge.module";
-import {InvoiceModule} from "./invoice/invoice.module";
-import {InvoiceItemModule} from "./invoice-item/invoice-item.module";
-
-
-
+import { GarageModule } from './garage/garge.module';
+import { InvoiceModule } from './invoice/invoice.module';
+import { InvoiceItemModule } from './invoice-item/invoice-item.module';
 
 @Module({
   imports: [
@@ -32,7 +29,7 @@ import {InvoiceItemModule} from "./invoice-item/invoice-item.module";
     }),
     GarageModule,
     InvoiceModule,
-    InvoiceItemModule
+    InvoiceItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],
