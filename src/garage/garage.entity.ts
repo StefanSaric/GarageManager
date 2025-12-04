@@ -3,21 +3,21 @@ import { Invoice } from '../invoice/invoice.entity';
 
 @Entity()
 export class Garage {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Column()
-    name: string;
+  @Column()
+  name: string;
 
-    @Column( {nullable: true})
-    address: string;
+  @Column({ nullable: true })
+  address: string;
 
-    @Column({ nullable: true })
-    phone?: string;
+  @Column({ nullable: true })
+  phone?: string;
 
-    @Column({ nullable: true, unique: true  })
-    email?: string;
+  @Column({ nullable: true, unique: true })
+  email?: string;
 
-    @OneToMany(() => Invoice, invoice => invoice.garage)
-    invoices: Invoice[];
+  @OneToMany(() => Invoice, (invoice) => invoice.garage)
+  invoices: Invoice[];
 }

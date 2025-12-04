@@ -5,8 +5,8 @@ import { GarageService } from './garage.service';
 import { GarageController } from './garage.controller';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Garage])],
-    providers: [GarageService],
-    controllers: [GarageController],
+  imports: [TypeOrmModule.forFeature([Garage])],
+  providers: [GarageService],
+  controllers: [GarageController],
 })
 export class GarageModule {}
