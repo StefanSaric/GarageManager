@@ -8,7 +8,7 @@ import {
 import { Garage } from '../garage/garage.entity';
 import { InvoiceItem } from '../invoice-item/invoice-item.entity';
 
-@Entity()
+@Entity('invoices')
 export class Invoice {
   @PrimaryGeneratedColumn('uuid')
   id: string;

@@ -1,4 +1,4 @@
-import {NotFoundException } from '@nestjs/common';
+import { NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { InvoiceItem } from './invoice-item.entity';
