@@ -1,12 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Invoice } from '../invoice/invoice.entity';
 
-@Entity()
+@Entity('invoice_items')
 export class InvoiceItem {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ nullable: true })
   description: string;
 
   @Column('int')
