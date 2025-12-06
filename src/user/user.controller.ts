@@ -13,28 +13,35 @@ import { UserService } from './user.service';
 import { User } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @Controller('users')
+@ApiTags('users')
+@ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
+  @ApiOperation({ summary: 'Get all users' })
   async findAll(): Promise<User[]> {
     return this.userService.findAll();
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'Find user by ID' })
   async findOne(@Param('id') id: string): Promise<User> {
     return this.userService.findOne(id);
   }
 
   @Post()
+  @ApiOperation({ summary: 'Create a new user' })
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
     return this.userService.create(createUserDto);
   }
 
   @Patch(':id')
+  @ApiOperation({ summary: 'Update user' })
   async update(
     @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
@@ -43,6 +50,7 @@ export class UserController {
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Delete user' })
   async remove(@Param('id') id: string): Promise<{ message: string }> {
     await this.userService.delete(id);
     return { message: `User with id ${id} deleted successfully` };

@@ -8,12 +8,17 @@ import {
   IsPhoneNumber,
 } from 'class-validator';
 import { Role } from '../enum/role.enum';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 
 export class UpdateUserDto {
+  @ApiPropertyOptional()
   @IsEmail()
   @IsOptional()
   email?: string;
 
+  @ApiPropertyOptional({
+    description: 'Must include uppercase letter and special character',
+  })
   @IsString()
   @MinLength(6)
   @Matches(/^(?=.*[A-Z])(?=.*[!@#$%^&*])/, {
@@ -23,18 +28,22 @@ export class UpdateUserDto {
   @IsOptional()
   password?: string;
 
+  @ApiPropertyOptional()
   @IsString()
   @IsOptional()
-  firstName?: string | null;
+  firstName?: string;
 
+  @ApiPropertyOptional()
   @IsString()
   @IsOptional()
-  lastName?: string | null;
+  lastName?: string;
 
+  @ApiPropertyOptional()
   @IsString()
   @IsOptional()
-  phone?: string | null;
+  phone?: string;
 
+  @ApiPropertyOptional()
   @IsEnum(Role, { message: 'role must be a valid role' })
   @IsOptional()
   roles?: Role;
