@@ -7,11 +7,17 @@ import {
   MinLength,
 } from 'class-validator';
 import { Role } from '../enum/role.enum';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto {
+  @ApiProperty({ required: true })
   @IsEmail()
   email: string;
 
+  @ApiProperty({
+    example: 'Password@123',
+    description: 'Must include uppercase letter and special character',
+  })
   @IsString()
   @MinLength(8)
   @Matches(/^(?=.*[A-Z])(?=.*[!@#$%^&*])/, {
@@ -20,14 +26,17 @@ export class CreateUserDto {
   })
   password: string;
 
+  @ApiProperty({ required: false })
   @IsString()
   @IsOptional()
   firstName?: string;
 
+  @ApiProperty({ required: false })
   @IsString()
   @IsOptional()
   lastName?: string;
 
+  @ApiProperty({ required: false })
   @IsString()
   @IsOptional()
   phone?: string;
